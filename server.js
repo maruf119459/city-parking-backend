@@ -461,15 +461,8 @@ app.get("/api/parking/times", async (req, res) => {
 const QRCode = require("qrcode");
 
 // Entrance QR Code Genaration
-app.post("/api/qr/entrance", async (req, res) => {
+app.post("/api/qr/generate", async (req, res) => {
     const qrData = JSON.stringify(req.body);
-    const qr = await QRCode.toDataURL(qrData);
-    res.json({ qr });
-});
-
-// Exit QR Code Genaration 
-app.post("/api/qr/exit", async (req, res) => {
-    const qrData = JSON.stringify({ entranceId: req.body.entranceId });
     const qr = await QRCode.toDataURL(qrData);
     res.json({ qr });
 });
